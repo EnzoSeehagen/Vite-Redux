@@ -1,15 +1,14 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import { connect } from 'react-redux'
 
-function App() {
-  const [contagem, setContagem] = useState(0)
-
+function App({contagem}) {
   return (
     <div className="App">
       <h1>Redux</h1>
       <div className="card">
-        <button onClick={() => setContagem((contagem) => contagem + 1)}>
+        <button>
           a contagem é {contagem}
         </button>
       </div>
@@ -17,4 +16,9 @@ function App() {
   )
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return {
+    contagem: state.counter.value
+  }
+}
+export default connect(mapStateToProps)(App);
