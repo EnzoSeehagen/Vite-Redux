@@ -22,8 +22,8 @@ function App() {
     <div className="App">
       <h1>Redux</h1>
       <div className="card">
-        <button onClick={handleOnClick}>a contagem é {contagem}</button>
-        <button onClick={handleOnClickAmount}>a contagem é {contagem}</button>
+        <button onClick={handleOnClick}>contagem</button>
+        <button onClick={handleOnClickAmount}>contagem x5</button>
       </div>
     </div>
   )
