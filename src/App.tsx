@@ -30,6 +30,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     increment: () => dispatch({type: "counter/increment"}),
   }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
