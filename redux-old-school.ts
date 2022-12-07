@@ -16,6 +16,14 @@ function reducer(state = initialState, action){
                  }
             }    
         }
+        case "counter/incrementAmount": {
+            return{
+                ...state,
+                counter: {
+                    value: state.counter.value + action.payload,
+                }
+            }
+        }
 
         default: {
             return state;

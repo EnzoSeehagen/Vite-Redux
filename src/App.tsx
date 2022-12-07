@@ -1,35 +1,49 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 
-function App({contagem, increment}) {
+
+function App() {
+
+ const contagem = useSelector(state => state.counter.value)
+ const dispatch = useDispatch()
+
   function handleOnClick(){
-    increment();
+    dispatch({type: "counter/increment"});
   }
+
+  function handleOnClickAmount(){
+    dispatch({type: "counter/incrementAmount", payload: 5});
+  }
+
   return (
     <div className="App">
       <h1>Redux</h1>
       <div className="card">
-        <button onClick={handleOnClick}>
-          a contagem é {contagem}
-        </button>
+        <button onClick={handleOnClick}>a contagem é {contagem}</button>
+        <button onClick={handleOnClickAmount}>a contagem é {contagem}</button>
       </div>
     </div>
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    contagem: state.counter.value
-  }
-};
+export default App;
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    increment: () => dispatch({type: "counter/increment"}),
-  }
-};
+//FORMA ANTIGA DE ACESSAR O ESTADO (FAZENDO O MAPEAMENTO ABAIXO)
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+//const mapStateToProps = (state) => {
+ // return {
+  //  contagem: state.counter.value
+  //}
+//};
+//
+//const mapDispatchToProps = (dispatch) => {
+  //return {
+    //increment: () => dispatch({type: "counter/increment"}),
+    //incrementAmount: (amount) => dispatch({type: "counter/incrementAmount", payload: amount})
+  //}
+//};
+
+//export default connect(mapStateToProps, mapDispatchToProps)(App);
